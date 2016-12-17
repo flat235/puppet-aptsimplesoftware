@@ -5,7 +5,6 @@
 1. [Description](#description)
 1. [Setup - The basics of getting started with aptsimplesoftware](#setup)
     * [What aptsimplesoftware affects](#what-aptsimplesoftware-affects)
-    * [Setup requirements](#setup-requirements)
 1. [Usage - Configuration options and additional functionality](#usage)
 1. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 1. [Limitations - OS compatibility, etc.](#limitations)
@@ -21,8 +20,8 @@ You should use this if you want to install a bunch of packages at once, which re
 
 ### What aptsimplesoftware affects
 
-* This module clears out /etc/apt/sources.list and puts the repositories into /etc/apt/sources.list.d/*
-* Also in /etc/apt/preferences.d/* files may be touched to pin packages
+* This module clears out `/etc/apt/sources.list` and puts the repositories into `/etc/apt/sources.list.d/*`
+* Also in `/etc/apt/preferences.d/*` files may be touched to pin packages
 * Obiously this (un)installs software
 * Dependencies: the apt module by puppetlabs
 * Configure your mirrors!
@@ -30,7 +29,7 @@ You should use this if you want to install a bunch of packages at once, which re
 
 ## Usage
 Example:
-
+```puppet
 class { 'aptsimplesoftware':
   mirror => 'ftp://localmirror',
   mirror_security => 'ftp://localsecuritymirror',
@@ -40,31 +39,31 @@ class { 'aptsimplesoftware':
   backports => [ 'kernel', 'that', 'supports', 'this', 'centurys', 'hardware' ],
   uninstall => [ 'emacs', 'screen' ]
 }
-
+```
 All parameters are optional.
 
 ## Reference
 Parameters:
 
-* mirror
+* `mirror`
 The mirror to use. Defaults to ftp://ftp.debian.org
 
-* mirror_security
+* `mirror_security`
 The mirror for security updates to use. Defaults to ftp://security.debian.org
 
-* release
+* `release`
 The release name. Default to jessie
 
-* repos
+* `repos`
 The repos to include. Defaults to main contrib non-free
 
-* packages
+* `packages`
 The list of packages to install. Defaults to an empty list.
 
-* backports
+* `backports`
 The list of packages to install from backports. Defaults to an empty list.
 
-* uninstall
+* `uninstall`
 The list of packages to uninstall. Defaults to an empty list.
 
 ## Limitations
@@ -75,3 +74,4 @@ Also I haven't done much of any testing as of yet.
 ## Development
 
 Pull request and bug reports are very welcome :)
+License is Apache 2.0
